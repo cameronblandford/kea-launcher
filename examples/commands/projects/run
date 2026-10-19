@@ -1,0 +1,17 @@
+#!/bin/sh
+# Lists folders in ~/Projects that contain "$1". Prints launcher JSON.
+q=$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')
+printf '{"items":['
+first=1
+for d in "$HOME"/Projects/*/; do
+  name=$(basename "$d")
+  case "$(printf '%s' "$name" | tr '[:upper:]' '[:lower:]')" in
+    *"$q"*) ;;
+    *) continue ;;
+  esac
+  [ $first -eq 1 ] || printf ','
+  first=0
+  printf '{"title":"%s","subtitle":"~/Projects/%s","icon":"%s","action":{"type":"open","target":"%s"}}' \
+    "$name" "$name" "$d" "$d"
+done
+printf ']}\n'

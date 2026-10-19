@@ -1,0 +1,7 @@
+{
+  "title": "Projects",
+  "keyword": "p",
+  "subtitle": "Open a folder in ~/Projects",
+  "icon": "sf:folder",
+  "mode": "list"
+}

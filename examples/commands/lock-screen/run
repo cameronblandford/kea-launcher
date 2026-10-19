@@ -1,0 +1,3 @@
+#!/bin/sh
+# Locks if "Require password after screen saver begins" is set to immediately.
+open -a ScreenSaverEngine

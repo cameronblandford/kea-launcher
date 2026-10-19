@@ -1,0 +1,7 @@
+#!/bin/sh
+dev=$(networksetup -listallhardwareports | awk '/Wi-Fi/{getline; print $2}')
+if networksetup -getairportpower "$dev" | grep -q On; then
+  networksetup -setairportpower "$dev" off
+else
+  networksetup -setairportpower "$dev" on
+fi
